@@ -16,15 +16,15 @@ jobs:
     steps:
       - checkout
         # look for existing cache and restore if found
-      - restore_cache:
-          key: v1-deps-{{ checksum "package-lock.json" }}
-        # install dependencies
+      - restore_cache: # Cache works as Key Value store
+          key: v1-deps-{{ checksum "package-lock.json" }} # here we define Key
+      # install dependencies
       - run:
           name: "Install dependencies"
           command: "npm install"
-        # save any changes to the cache
+      # save any changes to the cache
       - save_cache:
-          key: v1-deps-{{ checksum "package-lock.json" }}
+          key: v1-deps-{{ checksum "package-lock.json" }} # Here we pull Value (Node modules) by Key
           paths:
             - node_modules
       - run:
