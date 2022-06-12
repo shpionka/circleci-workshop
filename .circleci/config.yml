@@ -53,5 +53,5 @@ workflows:
       - say-hello:
           matrix:
             parameters:
-              node-version: [ "10.9.0", "16.13", "latest" ]
+              node-version: [ "12.2", "16.13", "latest" ]
 
