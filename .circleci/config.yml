@@ -40,7 +40,7 @@ jobs:
           command: "nohup npm start &" # This will keep Node process in background
       - run:
           name: "Run Create React App"
-          command: "cat nohup.out" # This will keep Node process in background
+          command: "cat ./nohup.out" # This will keep Node process in background
       - run:
           name: "Install playwright"
           command: "npx playwright install"
