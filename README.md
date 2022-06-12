@@ -1,1 +1,1 @@
-# circleci-workshop
+# Circle CI Workshop
