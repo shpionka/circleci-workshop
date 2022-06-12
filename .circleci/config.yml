@@ -8,7 +8,7 @@ orbs:
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  say-hello:
+  playwright-test:
     parameters:
       node-version:
         type: string
@@ -52,12 +52,25 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  per-branch-workflow:
     jobs:
-      - say-hello:
+      - playwright-test:
+          filters:
+            branches:
+              ignore:
+                - main
           matrix:
             parameters:
               node-version: [ "latest" ] # add version 10
-#              node-version: [ "12.2", "16.13", "latest" ] # add version 10
-#              node-version: [ "10.3", "16.13", "latest" ] # add version 10
+
+  main-branch-workflow:
+    jobs:
+      - playwright-test:
+          filters:
+            branches:
+              only:
+                - main
+          matrix:
+            parameters:
+              node-version: [ "12.2", "16.13", "latest" ]
 
