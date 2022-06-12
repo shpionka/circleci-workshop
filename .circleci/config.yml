@@ -37,7 +37,7 @@ jobs:
             - node_modules
       - run:
           name: "Run Create React App"
-          command: "nohup npm start"
+          command: "npm start"
           background: true # This will keep Node process in background
       - run:
           name: "Install playwright"
